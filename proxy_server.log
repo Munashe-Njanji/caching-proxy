@@ -1,0 +1,693 @@
+2024-09-12 02:24:18,405 - INFO - Starting proxy server on port 3002, forwarding requests to https://example.com
+2024-09-12 02:25:45,445 - INFO - Incoming request for: /products
+2024-09-12 02:25:45,446 - INFO - HIT: /products
+2024-09-12 02:25:45,448 - INFO - 127.0.0.1 [12/Sep/2024:02:25:45 +0200] "GET /products HTTP/1.1" 200 45415 "-" "python-requests/2.31.0"
+2024-09-12 02:27:00,530 - INFO - Incoming request for: /users
+2024-09-12 02:27:02,849 - INFO - Forwarding request to: https://example.com/users
+2024-09-12 02:27:02,850 - WARNING - NOT FOUND: /users
+2024-09-12 02:27:02,852 - INFO - 127.0.0.1 [12/Sep/2024:02:27:00 +0200] "GET /users HTTP/1.1" 404 168 "-" "python-requests/2.31.0"
+2024-09-12 02:27:02,859 - INFO - Incoming request for: /todos
+2024-09-12 02:27:04,066 - INFO - Forwarding request to: https://example.com/todos
+2024-09-12 02:27:04,067 - WARNING - NOT FOUND: /todos
+2024-09-12 02:27:04,069 - INFO - 127.0.0.1 [12/Sep/2024:02:27:02 +0200] "GET /todos HTTP/1.1" 404 168 "-" "python-requests/2.31.0"
+2024-09-12 02:27:04,075 - INFO - Incoming request for: /carts
+2024-09-12 02:27:05,306 - INFO - Forwarding request to: https://example.com/carts
+2024-09-12 02:27:05,307 - WARNING - NOT FOUND: /carts
+2024-09-12 02:27:05,309 - INFO - 127.0.0.1 [12/Sep/2024:02:27:04 +0200] "GET /carts HTTP/1.1" 404 168 "-" "python-requests/2.31.0"
+2024-09-12 02:27:05,316 - INFO - Incoming request for: /posts
+2024-09-12 02:27:06,536 - INFO - Forwarding request to: https://example.com/posts
+2024-09-12 02:27:06,537 - WARNING - NOT FOUND: /posts
+2024-09-12 02:27:06,539 - INFO - 127.0.0.1 [12/Sep/2024:02:27:05 +0200] "GET /posts HTTP/1.1" 404 168 "-" "python-requests/2.31.0"
+2024-09-12 02:27:06,547 - INFO - Incoming request for: /comments
+2024-09-12 02:27:07,765 - INFO - Forwarding request to: https://example.com/comments
+2024-09-12 02:27:07,765 - WARNING - NOT FOUND: /comments
+2024-09-12 02:27:07,768 - INFO - 127.0.0.1 [12/Sep/2024:02:27:06 +0200] "GET /comments HTTP/1.1" 404 168 "-" "python-requests/2.31.0"
+2024-09-12 02:29:58,043 - INFO - Starting proxy server on port 3002, forwarding requests to https://dummyjson.com
+2024-09-12 02:30:37,312 - INFO - Incoming request for: /products
+2024-09-12 02:30:37,313 - INFO - HIT: /products
+2024-09-12 02:30:37,314 - INFO - 127.0.0.1 [12/Sep/2024:02:30:37 +0200] "GET /products HTTP/1.1" 200 45415 "-" "Python/3.12 aiohttp/3.10.5"
+2024-09-12 02:30:37,315 - INFO - Incoming request for: /users
+2024-09-12 02:30:37,316 - INFO - Incoming request for: /todos
+2024-09-12 02:30:37,317 - INFO - Incoming request for: /carts
+2024-09-12 02:30:37,317 - INFO - Incoming request for: /posts
+2024-09-12 02:30:37,318 - INFO - Incoming request for: /comments
+2024-09-12 02:30:38,822 - INFO - Forwarding request to: https://dummyjson.com/posts
+2024-09-12 02:30:38,833 - ERROR - Error handling request
+Traceback (most recent call last):
+  File "/home/kelvin/.local/lib/python3.12/site-packages/aiohttp/web_protocol.py", line 462, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kelvin/.local/lib/python3.12/site-packages/aiohttp/web_app.py", line 537, in _handle
+    resp = await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kelvin/.local/lib/python3.12/site-packages/aiohttp/web_urldispatcher.py", line 211, in handler_wrapper
+    result = await result
+             ^^^^^^^^^^^^
+  File "/home/kelvin/PycharmProjects/caching_proxy/proxy_server.py", line 60, in handle_request
+    cache_manager.cache_response(url, response)
+  File "/home/kelvin/PycharmProjects/caching_proxy/proxy_server.py", line 34, in cache_response
+    self.save_cache()
+  File "/home/kelvin/PycharmProjects/caching_proxy/proxy_server.py", line 44, in save_cache
+    pickle.dump(self.cache, f)
+TypeError: cannot pickle 'coroutine' object
+2024-09-12 02:30:38,842 - INFO - 127.0.0.1 [12/Sep/2024:02:30:37 +0200] "GET /posts HTTP/1.1" 500 246 "-" "Python/3.12 aiohttp/3.10.5"
+2024-09-12 02:30:38,843 - INFO - Forwarding request to: https://dummyjson.com/comments
+2024-09-12 02:30:38,845 - INFO - Forwarding request to: https://dummyjson.com/users
+2024-09-12 02:30:38,847 - INFO - Forwarding request to: https://dummyjson.com/carts
+2024-09-12 02:30:38,849 - ERROR - Error handling request
+Traceback (most recent call last):
+  File "/home/kelvin/.local/lib/python3.12/site-packages/aiohttp/web_protocol.py", line 462, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kelvin/.local/lib/python3.12/site-packages/aiohttp/web_app.py", line 537, in _handle
+    resp = await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kelvin/.local/lib/python3.12/site-packages/aiohttp/web_urldispatcher.py", line 211, in handler_wrapper
+    result = await result
+             ^^^^^^^^^^^^
+  File "/home/kelvin/PycharmProjects/caching_proxy/proxy_server.py", line 60, in handle_request
+    cache_manager.cache_response(url, response)
+  File "/home/kelvin/PycharmProjects/caching_proxy/proxy_server.py", line 34, in cache_response
+    self.save_cache()
+  File "/home/kelvin/PycharmProjects/caching_proxy/proxy_server.py", line 44, in save_cache
+    pickle.dump(self.cache, f)
+TypeError: cannot pickle 'coroutine' object
+2024-09-12 02:30:38,851 - INFO - 127.0.0.1 [12/Sep/2024:02:30:37 +0200] "GET /comments HTTP/1.1" 500 246 "-" "Python/3.12 aiohttp/3.10.5"
+2024-09-12 02:30:38,852 - ERROR - Error handling request
+Traceback (most recent call last):
+  File "/home/kelvin/.local/lib/python3.12/site-packages/aiohttp/web_protocol.py", line 462, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kelvin/.local/lib/python3.12/site-packages/aiohttp/web_app.py", line 537, in _handle
+    resp = await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kelvin/.local/lib/python3.12/site-packages/aiohttp/web_urldispatcher.py", line 211, in handler_wrapper
+    result = await result
+             ^^^^^^^^^^^^
+  File "/home/kelvin/PycharmProjects/caching_proxy/proxy_server.py", line 60, in handle_request
+    cache_manager.cache_response(url, response)
+  File "/home/kelvin/PycharmProjects/caching_proxy/proxy_server.py", line 34, in cache_response
+    self.save_cache()
+  File "/home/kelvin/PycharmProjects/caching_proxy/proxy_server.py", line 44, in save_cache
+    pickle.dump(self.cache, f)
+TypeError: cannot pickle 'coroutine' object
+2024-09-12 02:30:38,854 - INFO - 127.0.0.1 [12/Sep/2024:02:30:37 +0200] "GET /users HTTP/1.1" 500 246 "-" "Python/3.12 aiohttp/3.10.5"
+2024-09-12 02:30:38,854 - ERROR - Error handling request
+Traceback (most recent call last):
+  File "/home/kelvin/.local/lib/python3.12/site-packages/aiohttp/web_protocol.py", line 462, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kelvin/.local/lib/python3.12/site-packages/aiohttp/web_app.py", line 537, in _handle
+    resp = await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kelvin/.local/lib/python3.12/site-packages/aiohttp/web_urldispatcher.py", line 211, in handler_wrapper
+    result = await result
+             ^^^^^^^^^^^^
+  File "/home/kelvin/PycharmProjects/caching_proxy/proxy_server.py", line 60, in handle_request
+    cache_manager.cache_response(url, response)
+  File "/home/kelvin/PycharmProjects/caching_proxy/proxy_server.py", line 34, in cache_response
+    self.save_cache()
+  File "/home/kelvin/PycharmProjects/caching_proxy/proxy_server.py", line 44, in save_cache
+    pickle.dump(self.cache, f)
+TypeError: cannot pickle 'coroutine' object
+2024-09-12 02:30:38,857 - INFO - 127.0.0.1 [12/Sep/2024:02:30:37 +0200] "GET /carts HTTP/1.1" 500 246 "-" "Python/3.12 aiohttp/3.10.5"
+2024-09-12 02:30:38,857 - INFO - Forwarding request to: https://dummyjson.com/todos
+2024-09-12 02:30:38,858 - ERROR - Error handling request
+Traceback (most recent call last):
+  File "/home/kelvin/.local/lib/python3.12/site-packages/aiohttp/web_protocol.py", line 462, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kelvin/.local/lib/python3.12/site-packages/aiohttp/web_app.py", line 537, in _handle
+    resp = await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kelvin/.local/lib/python3.12/site-packages/aiohttp/web_urldispatcher.py", line 211, in handler_wrapper
+    result = await result
+             ^^^^^^^^^^^^
+  File "/home/kelvin/PycharmProjects/caching_proxy/proxy_server.py", line 60, in handle_request
+    cache_manager.cache_response(url, response)
+  File "/home/kelvin/PycharmProjects/caching_proxy/proxy_server.py", line 34, in cache_response
+    self.save_cache()
+  File "/home/kelvin/PycharmProjects/caching_proxy/proxy_server.py", line 44, in save_cache
+    pickle.dump(self.cache, f)
+TypeError: cannot pickle 'coroutine' object
+2024-09-12 02:30:38,859 - INFO - 127.0.0.1 [12/Sep/2024:02:30:37 +0200] "GET /todos HTTP/1.1" 500 246 "-" "Python/3.12 aiohttp/3.10.5"
+2024-09-12 02:32:09,425 - INFO - Starting proxy server on port 3002, forwarding requests to https://dummyjson.com
+2024-09-12 02:32:19,283 - INFO - Incoming request for: /products
+2024-09-12 02:32:19,290 - INFO - Incoming request for: /users
+2024-09-12 02:32:19,298 - INFO - Incoming request for: /todos
+2024-09-12 02:32:19,300 - INFO - Incoming request for: /carts
+2024-09-12 02:32:19,301 - INFO - Incoming request for: /posts
+2024-09-12 02:32:19,303 - INFO - Incoming request for: /comments
+2024-09-12 02:32:20,504 - INFO - Forwarding request to: https://dummyjson.com/carts
+2024-09-12 02:32:20,507 - ERROR - Error handling request
+Traceback (most recent call last):
+  File "/home/kelvin/.local/lib/python3.12/site-packages/aiohttp/web_protocol.py", line 462, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kelvin/.local/lib/python3.12/site-packages/aiohttp/web_app.py", line 537, in _handle
+    resp = await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kelvin/.local/lib/python3.12/site-packages/aiohttp/web_urldispatcher.py", line 211, in handler_wrapper
+    result = await result
+             ^^^^^^^^^^^^
+  File "/home/kelvin/PycharmProjects/caching_proxy/proxy_server.py", line 56, in handle_request
+    cache_manager.cache_response(url, content, headers)
+  File "/home/kelvin/PycharmProjects/caching_proxy/proxy_server.py", line 33, in cache_response
+    self.save_cache()
+  File "/home/kelvin/PycharmProjects/caching_proxy/proxy_server.py", line 38, in save_cache
+    pickle.dump(self.cache, f)
+TypeError: can't pickle multidict._multidict.CIMultiDictProxy objects
+2024-09-12 02:32:20,514 - INFO - 127.0.0.1 [12/Sep/2024:02:32:19 +0200] "GET /carts HTTP/1.1" 500 246 "-" "Python/3.12 aiohttp/3.10.5"
+2024-09-12 02:32:20,547 - INFO - Forwarding request to: https://dummyjson.com/posts
+2024-09-12 02:32:20,549 - INFO - Forwarding request to: https://dummyjson.com/todos
+2024-09-12 02:32:20,551 - ERROR - Error handling request
+Traceback (most recent call last):
+  File "/home/kelvin/.local/lib/python3.12/site-packages/aiohttp/web_protocol.py", line 462, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kelvin/.local/lib/python3.12/site-packages/aiohttp/web_app.py", line 537, in _handle
+    resp = await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kelvin/.local/lib/python3.12/site-packages/aiohttp/web_urldispatcher.py", line 211, in handler_wrapper
+    result = await result
+             ^^^^^^^^^^^^
+  File "/home/kelvin/PycharmProjects/caching_proxy/proxy_server.py", line 56, in handle_request
+    cache_manager.cache_response(url, content, headers)
+  File "/home/kelvin/PycharmProjects/caching_proxy/proxy_server.py", line 33, in cache_response
+    self.save_cache()
+  File "/home/kelvin/PycharmProjects/caching_proxy/proxy_server.py", line 38, in save_cache
+    pickle.dump(self.cache, f)
+TypeError: can't pickle multidict._multidict.CIMultiDictProxy objects
+2024-09-12 02:32:20,556 - INFO - 127.0.0.1 [12/Sep/2024:02:32:19 +0200] "GET /todos HTTP/1.1" 500 246 "-" "Python/3.12 aiohttp/3.10.5"
+2024-09-12 02:32:20,559 - ERROR - Error handling request
+Traceback (most recent call last):
+  File "/home/kelvin/.local/lib/python3.12/site-packages/aiohttp/web_protocol.py", line 462, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kelvin/.local/lib/python3.12/site-packages/aiohttp/web_app.py", line 537, in _handle
+    resp = await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kelvin/.local/lib/python3.12/site-packages/aiohttp/web_urldispatcher.py", line 211, in handler_wrapper
+    result = await result
+             ^^^^^^^^^^^^
+  File "/home/kelvin/PycharmProjects/caching_proxy/proxy_server.py", line 56, in handle_request
+    cache_manager.cache_response(url, content, headers)
+  File "/home/kelvin/PycharmProjects/caching_proxy/proxy_server.py", line 33, in cache_response
+    self.save_cache()
+  File "/home/kelvin/PycharmProjects/caching_proxy/proxy_server.py", line 38, in save_cache
+    pickle.dump(self.cache, f)
+TypeError: can't pickle multidict._multidict.CIMultiDictProxy objects
+2024-09-12 02:32:20,562 - INFO - 127.0.0.1 [12/Sep/2024:02:32:19 +0200] "GET /posts HTTP/1.1" 500 246 "-" "Python/3.12 aiohttp/3.10.5"
+2024-09-12 02:32:20,563 - INFO - Forwarding request to: https://dummyjson.com/users
+2024-09-12 02:32:20,567 - ERROR - Error handling request
+Traceback (most recent call last):
+  File "/home/kelvin/.local/lib/python3.12/site-packages/aiohttp/web_protocol.py", line 462, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kelvin/.local/lib/python3.12/site-packages/aiohttp/web_app.py", line 537, in _handle
+    resp = await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kelvin/.local/lib/python3.12/site-packages/aiohttp/web_urldispatcher.py", line 211, in handler_wrapper
+    result = await result
+             ^^^^^^^^^^^^
+  File "/home/kelvin/PycharmProjects/caching_proxy/proxy_server.py", line 56, in handle_request
+    cache_manager.cache_response(url, content, headers)
+  File "/home/kelvin/PycharmProjects/caching_proxy/proxy_server.py", line 33, in cache_response
+    self.save_cache()
+  File "/home/kelvin/PycharmProjects/caching_proxy/proxy_server.py", line 38, in save_cache
+    pickle.dump(self.cache, f)
+TypeError: can't pickle multidict._multidict.CIMultiDictProxy objects
+2024-09-12 02:32:20,571 - INFO - 127.0.0.1 [12/Sep/2024:02:32:19 +0200] "GET /users HTTP/1.1" 500 246 "-" "Python/3.12 aiohttp/3.10.5"
+2024-09-12 02:32:20,572 - INFO - Forwarding request to: https://dummyjson.com/comments
+2024-09-12 02:32:20,574 - INFO - Forwarding request to: https://dummyjson.com/products
+2024-09-12 02:32:20,576 - ERROR - Error handling request
+Traceback (most recent call last):
+  File "/home/kelvin/.local/lib/python3.12/site-packages/aiohttp/web_protocol.py", line 462, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kelvin/.local/lib/python3.12/site-packages/aiohttp/web_app.py", line 537, in _handle
+    resp = await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kelvin/.local/lib/python3.12/site-packages/aiohttp/web_urldispatcher.py", line 211, in handler_wrapper
+    result = await result
+             ^^^^^^^^^^^^
+  File "/home/kelvin/PycharmProjects/caching_proxy/proxy_server.py", line 56, in handle_request
+    cache_manager.cache_response(url, content, headers)
+  File "/home/kelvin/PycharmProjects/caching_proxy/proxy_server.py", line 33, in cache_response
+    self.save_cache()
+  File "/home/kelvin/PycharmProjects/caching_proxy/proxy_server.py", line 38, in save_cache
+    pickle.dump(self.cache, f)
+TypeError: can't pickle multidict._multidict.CIMultiDictProxy objects
+2024-09-12 02:32:20,580 - INFO - 127.0.0.1 [12/Sep/2024:02:32:19 +0200] "GET /comments HTTP/1.1" 500 246 "-" "Python/3.12 aiohttp/3.10.5"
+2024-09-12 02:32:20,581 - ERROR - Error handling request
+Traceback (most recent call last):
+  File "/home/kelvin/.local/lib/python3.12/site-packages/aiohttp/web_protocol.py", line 462, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kelvin/.local/lib/python3.12/site-packages/aiohttp/web_app.py", line 537, in _handle
+    resp = await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kelvin/.local/lib/python3.12/site-packages/aiohttp/web_urldispatcher.py", line 211, in handler_wrapper
+    result = await result
+             ^^^^^^^^^^^^
+  File "/home/kelvin/PycharmProjects/caching_proxy/proxy_server.py", line 56, in handle_request
+    cache_manager.cache_response(url, content, headers)
+  File "/home/kelvin/PycharmProjects/caching_proxy/proxy_server.py", line 33, in cache_response
+    self.save_cache()
+  File "/home/kelvin/PycharmProjects/caching_proxy/proxy_server.py", line 38, in save_cache
+    pickle.dump(self.cache, f)
+TypeError: can't pickle multidict._multidict.CIMultiDictProxy objects
+2024-09-12 02:32:20,584 - INFO - 127.0.0.1 [12/Sep/2024:02:32:19 +0200] "GET /products HTTP/1.1" 500 246 "-" "Python/3.12 aiohttp/3.10.5"
+2024-09-12 02:36:52,233 - INFO - Starting proxy server on port 3002, forwarding requests to https://dummyjson.com
+2024-09-12 02:37:12,427 - INFO - Incoming request for: /products
+2024-09-12 02:37:12,429 - INFO - Incoming request for: /users
+2024-09-12 02:37:12,430 - INFO - Incoming request for: /todos
+2024-09-12 02:37:12,430 - INFO - Incoming request for: /carts
+2024-09-12 02:37:12,431 - INFO - Incoming request for: /posts
+2024-09-12 02:37:12,431 - INFO - Incoming request for: /comments
+2024-09-12 02:37:13,576 - INFO - Forwarding request to: https://dummyjson.com/comments
+2024-09-12 02:37:13,578 - INFO - CACHED: /comments
+2024-09-12 02:37:13,582 - INFO - Forwarding request to: https://dummyjson.com/posts
+2024-09-12 02:37:13,584 - INFO - CACHED: /posts
+2024-09-12 02:37:13,586 - INFO - 127.0.0.1 [12/Sep/2024:02:37:12 +0200] "GET /comments HTTP/1.1" 200 5219 "-" "Python/3.12 aiohttp/3.10.5"
+2024-09-12 02:37:13,587 - INFO - 127.0.0.1 [12/Sep/2024:02:37:12 +0200] "GET /posts HTTP/1.1" 200 15760 "-" "Python/3.12 aiohttp/3.10.5"
+2024-09-12 02:37:13,588 - INFO - Forwarding request to: https://dummyjson.com/todos
+2024-09-12 02:37:13,594 - INFO - CACHED: /todos
+2024-09-12 02:37:13,594 - INFO - Forwarding request to: https://dummyjson.com/carts
+2024-09-12 02:37:13,596 - INFO - CACHED: /carts
+2024-09-12 02:37:13,599 - INFO - 127.0.0.1 [12/Sep/2024:02:37:12 +0200] "GET /todos HTTP/1.1" 200 3602 "-" "Python/3.12 aiohttp/3.10.5"
+2024-09-12 02:37:13,600 - INFO - 127.0.0.1 [12/Sep/2024:02:37:12 +0200] "GET /carts HTTP/1.1" 200 33197 "-" "Python/3.12 aiohttp/3.10.5"
+2024-09-12 02:37:13,600 - INFO - Forwarding request to: https://dummyjson.com/products
+2024-09-12 02:37:13,602 - INFO - CACHED: /products
+2024-09-12 02:37:13,603 - INFO - Forwarding request to: https://dummyjson.com/users
+2024-09-12 02:37:13,604 - INFO - CACHED: /users
+2024-09-12 02:37:13,605 - INFO - 127.0.0.1 [12/Sep/2024:02:37:12 +0200] "GET /products HTTP/1.1" 200 45415 "-" "Python/3.12 aiohttp/3.10.5"
+2024-09-12 02:37:13,606 - INFO - 127.0.0.1 [12/Sep/2024:02:37:12 +0200] "GET /users HTTP/1.1" 200 42979 "-" "Python/3.12 aiohttp/3.10.5"
+2024-09-12 02:42:19,959 - INFO - Incoming request for: /products
+2024-09-12 02:42:20,018 - INFO - HIT: /products
+2024-09-12 02:42:20,183 - INFO - 127.0.0.1 [12/Sep/2024:02:42:19 +0200] "GET /products HTTP/1.1" 200 45415 "-" "Python/3.12 aiohttp/3.10.5"
+2024-09-12 02:42:20,211 - INFO - Incoming request for: /users
+2024-09-12 02:42:20,211 - INFO - HIT: /users
+2024-09-12 02:42:20,233 - INFO - 127.0.0.1 [12/Sep/2024:02:42:20 +0200] "GET /users HTTP/1.1" 200 42979 "-" "Python/3.12 aiohttp/3.10.5"
+2024-09-12 02:42:20,235 - INFO - Incoming request for: /todos
+2024-09-12 02:42:20,236 - INFO - HIT: /todos
+2024-09-12 02:42:20,239 - INFO - 127.0.0.1 [12/Sep/2024:02:42:20 +0200] "GET /todos HTTP/1.1" 200 3602 "-" "Python/3.12 aiohttp/3.10.5"
+2024-09-12 02:42:20,240 - INFO - Incoming request for: /carts
+2024-09-12 02:42:20,241 - INFO - HIT: /carts
+2024-09-12 02:42:20,253 - INFO - 127.0.0.1 [12/Sep/2024:02:42:20 +0200] "GET /carts HTTP/1.1" 200 33197 "-" "Python/3.12 aiohttp/3.10.5"
+2024-09-12 02:42:20,254 - INFO - Incoming request for: /posts
+2024-09-12 02:42:20,254 - INFO - HIT: /posts
+2024-09-12 02:42:20,268 - INFO - 127.0.0.1 [12/Sep/2024:02:42:20 +0200] "GET /posts HTTP/1.1" 200 15760 "-" "Python/3.12 aiohttp/3.10.5"
+2024-09-12 02:42:20,269 - INFO - Incoming request for: /comments
+2024-09-12 02:42:20,270 - INFO - HIT: /comments
+2024-09-12 02:42:20,272 - INFO - 127.0.0.1 [12/Sep/2024:02:42:20 +0200] "GET /comments HTTP/1.1" 200 5219 "-" "Python/3.12 aiohttp/3.10.5"
+2024-09-12 02:44:31,834 - INFO - Incoming request for: /products
+2024-09-12 02:44:31,836 - INFO - HIT: /products
+2024-09-12 02:44:31,837 - INFO - 127.0.0.1 [12/Sep/2024:02:44:31 +0200] "GET /products HTTP/1.1" 200 45415 "-" "curl/8.5.0"
+2024-09-12 02:47:30,678 - INFO - Starting proxy server on port 3002, forwarding requests to https://dummyjson.com
+2024-09-12 02:47:34,770 - INFO - Incoming request for: /products
+2024-09-12 02:47:34,771 - INFO - HIT: /products
+2024-09-12 02:47:34,771 - INFO - 127.0.0.1 [12/Sep/2024:02:47:34 +0200] "GET /products HTTP/1.1" 200 45415 "-" "curl/8.5.0"
+2024-09-12 02:49:23,194 - INFO - Starting proxy server on port 3002, forwarding requests to https://dummyjson.com
+2024-09-12 02:49:26,867 - INFO - Incoming request for: /products
+2024-09-12 02:49:26,867 - INFO - HIT: /products
+2024-09-12 02:49:26,868 - INFO - 127.0.0.1 [12/Sep/2024:02:49:26 +0200] "GET /products HTTP/1.1" 200 45415 "-" "curl/8.5.0"
+2024-09-12 02:50:31,141 - INFO - Incoming request for: /products
+2024-09-12 02:50:31,141 - INFO - HIT: /products
+2024-09-12 02:50:31,141 - INFO - 127.0.0.1 [12/Sep/2024:02:50:31 +0200] "GET /products HTTP/1.1" 200 45415 "-" "curl/8.5.0"
+2024-09-12 02:51:13,446 - INFO - Incoming request for: /products
+2024-09-12 02:51:13,446 - INFO - HIT: /products
+2024-09-12 02:51:13,448 - INFO - 127.0.0.1 [12/Sep/2024:02:51:13 +0200] "GET /products HTTP/1.1" 200 45415 "-" "Python/3.12 aiohttp/3.10.5"
+2024-09-12 02:51:13,448 - INFO - Incoming request for: /users
+2024-09-12 02:51:13,448 - INFO - HIT: /users
+2024-09-12 02:51:13,450 - INFO - 127.0.0.1 [12/Sep/2024:02:51:13 +0200] "GET /users HTTP/1.1" 200 42979 "-" "Python/3.12 aiohttp/3.10.5"
+2024-09-12 02:51:13,450 - INFO - Incoming request for: /todos
+2024-09-12 02:51:13,450 - INFO - HIT: /todos
+2024-09-12 02:51:13,451 - INFO - 127.0.0.1 [12/Sep/2024:02:51:13 +0200] "GET /todos HTTP/1.1" 200 3602 "-" "Python/3.12 aiohttp/3.10.5"
+2024-09-12 02:51:13,451 - INFO - Incoming request for: /carts
+2024-09-12 02:51:13,451 - INFO - HIT: /carts
+2024-09-12 02:51:13,452 - INFO - 127.0.0.1 [12/Sep/2024:02:51:13 +0200] "GET /carts HTTP/1.1" 200 33197 "-" "Python/3.12 aiohttp/3.10.5"
+2024-09-12 02:51:13,452 - INFO - Incoming request for: /posts
+2024-09-12 02:51:13,452 - INFO - HIT: /posts
+2024-09-12 02:51:13,453 - INFO - 127.0.0.1 [12/Sep/2024:02:51:13 +0200] "GET /posts HTTP/1.1" 200 15760 "-" "Python/3.12 aiohttp/3.10.5"
+2024-09-12 02:51:13,453 - INFO - Incoming request for: /comments
+2024-09-12 02:51:13,454 - INFO - HIT: /comments
+2024-09-12 02:51:13,454 - INFO - 127.0.0.1 [12/Sep/2024:02:51:13 +0200] "GET /comments HTTP/1.1" 200 5219 "-" "Python/3.12 aiohttp/3.10.5"
+2024-09-12 02:52:46,863 - INFO - Starting proxy server on port 3002, forwarding requests to https://dummyjson.com
+2024-09-12 02:53:01,027 - INFO - Incoming request for: /products
+2024-09-12 02:53:01,029 - INFO - Incoming request for: /users
+2024-09-12 02:53:01,030 - INFO - Incoming request for: /todos
+2024-09-12 02:53:01,030 - INFO - Incoming request for: /carts
+2024-09-12 02:53:01,031 - INFO - Incoming request for: /posts
+2024-09-12 02:53:01,031 - INFO - Incoming request for: /comments
+2024-09-12 02:53:02,226 - INFO - Forwarding request to: https://dummyjson.com/comments
+2024-09-12 02:53:02,227 - INFO - CACHED: /comments
+2024-09-12 02:53:02,227 - INFO - Forwarding request to: https://dummyjson.com/products
+2024-09-12 02:53:02,228 - INFO - 127.0.0.1 [12/Sep/2024:02:53:01 +0200] "GET /comments HTTP/1.1" 200 5211 "-" "Python/3.12 aiohttp/3.10.5"
+2024-09-12 02:53:02,230 - INFO - CACHED: /products
+2024-09-12 02:53:02,231 - INFO - Forwarding request to: https://dummyjson.com/todos
+2024-09-12 02:53:02,232 - INFO - CACHED: /todos
+2024-09-12 02:53:02,233 - INFO - 127.0.0.1 [12/Sep/2024:02:53:01 +0200] "GET /products HTTP/1.1" 200 45407 "-" "Python/3.12 aiohttp/3.10.5"
+2024-09-12 02:53:02,233 - INFO - 127.0.0.1 [12/Sep/2024:02:53:01 +0200] "GET /todos HTTP/1.1" 200 3594 "-" "Python/3.12 aiohttp/3.10.5"
+2024-09-12 02:53:02,233 - INFO - Forwarding request to: https://dummyjson.com/users
+2024-09-12 02:53:02,239 - INFO - CACHED: /users
+2024-09-12 02:53:02,240 - INFO - 127.0.0.1 [12/Sep/2024:02:53:01 +0200] "GET /users HTTP/1.1" 200 42971 "-" "Python/3.12 aiohttp/3.10.5"
+2024-09-12 02:53:02,243 - INFO - Forwarding request to: https://dummyjson.com/posts
+2024-09-12 02:53:02,251 - INFO - CACHED: /posts
+2024-09-12 02:53:02,252 - INFO - 127.0.0.1 [12/Sep/2024:02:53:01 +0200] "GET /posts HTTP/1.1" 200 15752 "-" "Python/3.12 aiohttp/3.10.5"
+2024-09-12 02:53:02,253 - INFO - Forwarding request to: https://dummyjson.com/carts
+2024-09-12 02:53:02,257 - INFO - CACHED: /carts
+2024-09-12 02:53:02,257 - INFO - 127.0.0.1 [12/Sep/2024:02:53:01 +0200] "GET /carts HTTP/1.1" 200 33189 "-" "Python/3.12 aiohttp/3.10.5"
+2024-09-12 02:56:51,276 - INFO - Cache file cache_data.json not found. Starting with empty cache.
+2024-09-12 02:56:51,277 - INFO - Cache file cache_data.json not found. Starting with empty cache.
+2024-09-12 02:56:51,277 - INFO - Starting proxy server on port 3002, forwarding requests to https://dummyjson.com
+2024-09-12 02:56:56,661 - INFO - Incoming request for: /products
+2024-09-12 02:56:56,661 - INFO - Cache MISS: /products
+2024-09-12 02:56:57,622 - INFO - Forwarding request to: https://dummyjson.com/products
+2024-09-12 02:56:57,625 - INFO - Cache saved to cache_data.json
+2024-09-12 02:56:57,626 - INFO - CACHED: /products
+2024-09-12 02:56:57,630 - INFO - 127.0.0.1 [12/Sep/2024:02:56:56 +0200] "GET /products HTTP/1.1" 200 45407 "-" "curl/8.5.0"
+2024-09-12 02:57:08,331 - INFO - Incoming request for: /products
+2024-09-12 02:57:08,331 - INFO - Cache HIT: /products
+2024-09-12 02:57:08,332 - INFO - Serving cached response for: /products
+2024-09-12 02:57:08,334 - INFO - 127.0.0.1 [12/Sep/2024:02:57:08 +0200] "GET /products HTTP/1.1" 200 45407 "-" "Python/3.12 aiohttp/3.10.5"
+2024-09-12 02:57:08,334 - INFO - Incoming request for: /users
+2024-09-12 02:57:08,335 - INFO - Cache MISS: /users
+2024-09-12 02:57:08,336 - INFO - Incoming request for: /todos
+2024-09-12 02:57:08,336 - INFO - Cache MISS: /todos
+2024-09-12 02:57:08,337 - INFO - Incoming request for: /carts
+2024-09-12 02:57:08,337 - INFO - Cache MISS: /carts
+2024-09-12 02:57:08,340 - INFO - Incoming request for: /posts
+2024-09-12 02:57:08,340 - INFO - Cache MISS: /posts
+2024-09-12 02:57:08,341 - INFO - Incoming request for: /comments
+2024-09-12 02:57:08,341 - INFO - Cache MISS: /comments
+2024-09-12 02:57:09,225 - INFO - Forwarding request to: https://dummyjson.com/todos
+2024-09-12 02:57:09,247 - INFO - Cache saved to cache_data.json
+2024-09-12 02:57:09,248 - INFO - CACHED: /todos
+2024-09-12 02:57:09,251 - INFO - 127.0.0.1 [12/Sep/2024:02:57:08 +0200] "GET /todos HTTP/1.1" 200 3602 "-" "Python/3.12 aiohttp/3.10.5"
+2024-09-12 02:57:09,255 - INFO - Forwarding request to: https://dummyjson.com/carts
+2024-09-12 02:57:09,260 - INFO - Cache saved to cache_data.json
+2024-09-12 02:57:09,260 - INFO - CACHED: /carts
+2024-09-12 02:57:09,262 - INFO - Forwarding request to: https://dummyjson.com/comments
+2024-09-12 02:57:09,269 - INFO - Cache saved to cache_data.json
+2024-09-12 02:57:09,270 - INFO - CACHED: /comments
+2024-09-12 02:57:09,272 - INFO - 127.0.0.1 [12/Sep/2024:02:57:08 +0200] "GET /carts HTTP/1.1" 200 33197 "-" "Python/3.12 aiohttp/3.10.5"
+2024-09-12 02:57:09,274 - INFO - 127.0.0.1 [12/Sep/2024:02:57:08 +0200] "GET /comments HTTP/1.1" 200 5219 "-" "Python/3.12 aiohttp/3.10.5"
+2024-09-12 02:57:09,283 - INFO - Forwarding request to: https://dummyjson.com/users
+2024-09-12 02:57:09,301 - INFO - Cache saved to cache_data.json
+2024-09-12 02:57:09,301 - INFO - CACHED: /users
+2024-09-12 02:57:09,305 - INFO - 127.0.0.1 [12/Sep/2024:02:57:08 +0200] "GET /users HTTP/1.1" 200 42979 "-" "Python/3.12 aiohttp/3.10.5"
+2024-09-12 02:57:09,305 - INFO - Forwarding request to: https://dummyjson.com/posts
+2024-09-12 02:57:09,315 - INFO - Cache saved to cache_data.json
+2024-09-12 02:57:09,315 - INFO - CACHED: /posts
+2024-09-12 02:57:09,319 - INFO - 127.0.0.1 [12/Sep/2024:02:57:08 +0200] "GET /posts HTTP/1.1" 200 15760 "-" "Python/3.12 aiohttp/3.10.5"
+2024-09-12 02:58:36,124 - INFO - Incoming request for: /products
+2024-09-12 02:58:36,124 - INFO - Cache HIT: /products
+2024-09-12 02:58:36,125 - INFO - Serving cached response for: /products
+2024-09-12 02:58:36,125 - INFO - 127.0.0.1 [12/Sep/2024:02:58:36 +0200] "GET /products HTTP/1.1" 200 45407 "-" "Python/3.12 aiohttp/3.10.5"
+2024-09-12 02:58:36,126 - INFO - Incoming request for: /users
+2024-09-12 02:58:36,126 - INFO - Cache HIT: /users
+2024-09-12 02:58:36,126 - INFO - Serving cached response for: /users
+2024-09-12 02:58:36,126 - INFO - 127.0.0.1 [12/Sep/2024:02:58:36 +0200] "GET /users HTTP/1.1" 200 42979 "-" "Python/3.12 aiohttp/3.10.5"
+2024-09-12 02:58:36,127 - INFO - Incoming request for: /todos
+2024-09-12 02:58:36,127 - INFO - Cache HIT: /todos
+2024-09-12 02:58:36,127 - INFO - Serving cached response for: /todos
+2024-09-12 02:58:36,127 - INFO - 127.0.0.1 [12/Sep/2024:02:58:36 +0200] "GET /todos HTTP/1.1" 200 3602 "-" "Python/3.12 aiohttp/3.10.5"
+2024-09-12 02:58:36,127 - INFO - Incoming request for: /carts
+2024-09-12 02:58:36,127 - INFO - Cache HIT: /carts
+2024-09-12 02:58:36,127 - INFO - Serving cached response for: /carts
+2024-09-12 02:58:36,128 - INFO - 127.0.0.1 [12/Sep/2024:02:58:36 +0200] "GET /carts HTTP/1.1" 200 33197 "-" "Python/3.12 aiohttp/3.10.5"
+2024-09-12 02:58:36,128 - INFO - Incoming request for: /posts
+2024-09-12 02:58:36,128 - INFO - Cache HIT: /posts
+2024-09-12 02:58:36,128 - INFO - Serving cached response for: /posts
+2024-09-12 02:58:36,128 - INFO - 127.0.0.1 [12/Sep/2024:02:58:36 +0200] "GET /posts HTTP/1.1" 200 15760 "-" "Python/3.12 aiohttp/3.10.5"
+2024-09-12 02:58:36,129 - INFO - Incoming request for: /comments
+2024-09-12 02:58:36,129 - INFO - Cache HIT: /comments
+2024-09-12 02:58:36,129 - INFO - Serving cached response for: /comments
+2024-09-12 02:58:36,129 - INFO - 127.0.0.1 [12/Sep/2024:02:58:36 +0200] "GET /comments HTTP/1.1" 200 5219 "-" "Python/3.12 aiohttp/3.10.5"
+2024-09-12 03:02:35,823 - INFO - Incoming request for: /products
+2024-09-12 03:02:35,823 - INFO - Cache HIT: /products
+2024-09-12 03:02:35,823 - INFO - Serving cached response for: /products
+2024-09-12 03:02:35,824 - INFO - 127.0.0.1 [12/Sep/2024:03:02:35 +0200] "GET /products HTTP/1.1" 200 45407 "-" "Python/3.12 aiohttp/3.10.5"
+2024-09-12 03:02:36,830 - INFO - Incoming request for: /users
+2024-09-12 03:02:36,831 - INFO - Cache HIT: /users
+2024-09-12 03:02:36,831 - INFO - Serving cached response for: /users
+2024-09-12 03:02:36,833 - INFO - 127.0.0.1 [12/Sep/2024:03:02:36 +0200] "GET /users HTTP/1.1" 200 42979 "-" "Python/3.12 aiohttp/3.10.5"
+2024-09-12 03:02:37,838 - INFO - Incoming request for: /todos
+2024-09-12 03:02:37,839 - INFO - Cache HIT: /todos
+2024-09-12 03:02:37,839 - INFO - Serving cached response for: /todos
+2024-09-12 03:02:37,841 - INFO - 127.0.0.1 [12/Sep/2024:03:02:37 +0200] "GET /todos HTTP/1.1" 200 3602 "-" "Python/3.12 aiohttp/3.10.5"
+2024-09-12 03:02:38,846 - INFO - Incoming request for: /carts
+2024-09-12 03:02:38,847 - INFO - Cache HIT: /carts
+2024-09-12 03:02:38,848 - INFO - Serving cached response for: /carts
+2024-09-12 03:02:38,850 - INFO - 127.0.0.1 [12/Sep/2024:03:02:38 +0200] "GET /carts HTTP/1.1" 200 33197 "-" "Python/3.12 aiohttp/3.10.5"
+2024-09-12 03:02:39,861 - INFO - Incoming request for: /posts
+2024-09-12 03:02:39,862 - INFO - Cache HIT: /posts
+2024-09-12 03:02:39,862 - INFO - Serving cached response for: /posts
+2024-09-12 03:02:39,863 - INFO - 127.0.0.1 [12/Sep/2024:03:02:39 +0200] "GET /posts HTTP/1.1" 200 15760 "-" "Python/3.12 aiohttp/3.10.5"
+2024-09-12 03:02:40,870 - INFO - Incoming request for: /comments
+2024-09-12 03:02:40,871 - INFO - Cache HIT: /comments
+2024-09-12 03:02:40,872 - INFO - Serving cached response for: /comments
+2024-09-12 03:02:40,873 - INFO - 127.0.0.1 [12/Sep/2024:03:02:40 +0200] "GET /comments HTTP/1.1" 200 5219 "-" "Python/3.12 aiohttp/3.10.5"
+2024-09-12 03:05:17,514 - INFO - Incoming request for: /products
+2024-09-12 03:05:17,514 - INFO - Cache HIT: /products
+2024-09-12 03:05:17,514 - INFO - Serving cached response for: /products
+2024-09-12 03:05:17,515 - INFO - 127.0.0.1 [12/Sep/2024:03:05:17 +0200] "GET /products HTTP/1.1" 200 45407 "-" "Python/3.12 aiohttp/3.10.5"
+2024-09-12 03:05:18,521 - INFO - Incoming request for: /users
+2024-09-12 03:05:18,526 - INFO - Cache HIT: /users
+2024-09-12 03:05:18,527 - INFO - Serving cached response for: /users
+2024-09-12 03:05:18,530 - INFO - 127.0.0.1 [12/Sep/2024:03:05:18 +0200] "GET /users HTTP/1.1" 200 42979 "-" "Python/3.12 aiohttp/3.10.5"
+2024-09-12 03:05:19,537 - INFO - Incoming request for: /todos
+2024-09-12 03:05:19,537 - INFO - Cache HIT: /todos
+2024-09-12 03:05:19,538 - INFO - Serving cached response for: /todos
+2024-09-12 03:05:19,539 - INFO - 127.0.0.1 [12/Sep/2024:03:05:19 +0200] "GET /todos HTTP/1.1" 200 3602 "-" "Python/3.12 aiohttp/3.10.5"
+2024-09-12 03:05:20,546 - INFO - Incoming request for: /carts
+2024-09-12 03:05:20,546 - INFO - Cache HIT: /carts
+2024-09-12 03:05:20,547 - INFO - Serving cached response for: /carts
+2024-09-12 03:05:20,548 - INFO - 127.0.0.1 [12/Sep/2024:03:05:20 +0200] "GET /carts HTTP/1.1" 200 33197 "-" "Python/3.12 aiohttp/3.10.5"
+2024-09-12 03:05:21,561 - INFO - Incoming request for: /posts
+2024-09-12 03:05:21,561 - INFO - Cache HIT: /posts
+2024-09-12 03:05:21,562 - INFO - Serving cached response for: /posts
+2024-09-12 03:05:21,563 - INFO - 127.0.0.1 [12/Sep/2024:03:05:21 +0200] "GET /posts HTTP/1.1" 200 15760 "-" "Python/3.12 aiohttp/3.10.5"
+2024-09-12 03:05:22,570 - INFO - Incoming request for: /comments
+2024-09-12 03:05:22,570 - INFO - Cache HIT: /comments
+2024-09-12 03:05:22,570 - INFO - Serving cached response for: /comments
+2024-09-12 03:05:22,572 - INFO - 127.0.0.1 [12/Sep/2024:03:05:22 +0200] "GET /comments HTTP/1.1" 200 5219 "-" "Python/3.12 aiohttp/3.10.5"
+2024-09-12 03:08:22,154 - INFO - Cache loaded from cache_data.json
+2024-09-12 03:08:22,155 - INFO - Cache saved to cache_data.json
+2024-09-12 03:08:22,155 - INFO - Cache cleared
+2024-09-12 03:08:48,249 - INFO - Incoming request for: /products
+2024-09-12 03:08:48,249 - INFO - Cache HIT: /products
+2024-09-12 03:08:48,250 - INFO - Serving cached response for: /products
+2024-09-12 03:08:48,251 - INFO - 127.0.0.1 [12/Sep/2024:03:08:48 +0200] "GET /products HTTP/1.1" 200 45407 "-" "Python/3.12 aiohttp/3.10.5"
+2024-09-12 03:08:49,258 - INFO - Incoming request for: /users
+2024-09-12 03:08:49,258 - INFO - Cache HIT: /users
+2024-09-12 03:08:49,259 - INFO - Serving cached response for: /users
+2024-09-12 03:08:49,260 - INFO - 127.0.0.1 [12/Sep/2024:03:08:49 +0200] "GET /users HTTP/1.1" 200 42979 "-" "Python/3.12 aiohttp/3.10.5"
+2024-09-12 03:08:50,264 - INFO - Incoming request for: /todos
+2024-09-12 03:08:50,264 - INFO - Cache HIT: /todos
+2024-09-12 03:08:50,265 - INFO - Serving cached response for: /todos
+2024-09-12 03:08:50,266 - INFO - 127.0.0.1 [12/Sep/2024:03:08:50 +0200] "GET /todos HTTP/1.1" 200 3602 "-" "Python/3.12 aiohttp/3.10.5"
+2024-09-12 03:08:51,272 - INFO - Incoming request for: /carts
+2024-09-12 03:08:51,272 - INFO - Cache HIT: /carts
+2024-09-12 03:08:51,273 - INFO - Serving cached response for: /carts
+2024-09-12 03:08:51,275 - INFO - 127.0.0.1 [12/Sep/2024:03:08:51 +0200] "GET /carts HTTP/1.1" 200 33197 "-" "Python/3.12 aiohttp/3.10.5"
+2024-09-12 03:08:52,288 - INFO - Incoming request for: /posts
+2024-09-12 03:08:52,289 - INFO - Cache HIT: /posts
+2024-09-12 03:08:52,289 - INFO - Serving cached response for: /posts
+2024-09-12 03:08:52,290 - INFO - 127.0.0.1 [12/Sep/2024:03:08:52 +0200] "GET /posts HTTP/1.1" 200 15760 "-" "Python/3.12 aiohttp/3.10.5"
+2024-09-12 03:08:53,295 - INFO - Incoming request for: /comments
+2024-09-12 03:08:53,296 - INFO - Cache HIT: /comments
+2024-09-12 03:08:53,296 - INFO - Serving cached response for: /comments
+2024-09-12 03:08:53,298 - INFO - 127.0.0.1 [12/Sep/2024:03:08:53 +0200] "GET /comments HTTP/1.1" 200 5219 "-" "Python/3.12 aiohttp/3.10.5"
+2024-09-12 03:09:09,587 - INFO - Incoming request for: /products
+2024-09-12 03:09:09,588 - INFO - Cache HIT: /products
+2024-09-12 03:09:09,588 - INFO - Serving cached response for: /products
+2024-09-12 03:09:09,590 - INFO - 127.0.0.1 [12/Sep/2024:03:09:09 +0200] "GET /products HTTP/1.1" 200 45407 "-" "Python/3.12 aiohttp/3.10.5"
+2024-09-12 03:09:10,597 - INFO - Incoming request for: /users
+2024-09-12 03:09:10,597 - INFO - Cache HIT: /users
+2024-09-12 03:09:10,598 - INFO - Serving cached response for: /users
+2024-09-12 03:09:10,599 - INFO - 127.0.0.1 [12/Sep/2024:03:09:10 +0200] "GET /users HTTP/1.1" 200 42979 "-" "Python/3.12 aiohttp/3.10.5"
+2024-09-12 03:09:11,606 - INFO - Incoming request for: /todos
+2024-09-12 03:09:11,606 - INFO - Cache HIT: /todos
+2024-09-12 03:09:11,607 - INFO - Serving cached response for: /todos
+2024-09-12 03:09:11,609 - INFO - 127.0.0.1 [12/Sep/2024:03:09:11 +0200] "GET /todos HTTP/1.1" 200 3602 "-" "Python/3.12 aiohttp/3.10.5"
+2024-09-12 03:09:12,615 - INFO - Incoming request for: /carts
+2024-09-12 03:09:12,615 - INFO - Cache HIT: /carts
+2024-09-12 03:09:12,616 - INFO - Serving cached response for: /carts
+2024-09-12 03:09:12,617 - INFO - 127.0.0.1 [12/Sep/2024:03:09:12 +0200] "GET /carts HTTP/1.1" 200 33197 "-" "Python/3.12 aiohttp/3.10.5"
+2024-09-12 03:09:13,624 - INFO - Incoming request for: /posts
+2024-09-12 03:09:13,624 - INFO - Cache HIT: /posts
+2024-09-12 03:09:13,624 - INFO - Serving cached response for: /posts
+2024-09-12 03:09:13,627 - INFO - 127.0.0.1 [12/Sep/2024:03:09:13 +0200] "GET /posts HTTP/1.1" 200 15760 "-" "Python/3.12 aiohttp/3.10.5"
+2024-09-12 03:09:14,631 - INFO - Incoming request for: /comments
+2024-09-12 03:09:14,632 - INFO - Cache HIT: /comments
+2024-09-12 03:09:14,632 - INFO - Serving cached response for: /comments
+2024-09-12 03:09:14,633 - INFO - 127.0.0.1 [12/Sep/2024:03:09:14 +0200] "GET /comments HTTP/1.1" 200 5219 "-" "Python/3.12 aiohttp/3.10.5"
+2024-09-12 03:10:16,474 - INFO - Cache loaded from cache_data.json
+2024-09-12 03:10:16,474 - INFO - Cache saved to cache_data.json
+2024-09-12 03:10:16,474 - INFO - Cache cleared
+2024-09-12 03:10:18,371 - INFO - Cache loaded from cache_data.json
+2024-09-12 03:10:18,371 - INFO - Cache saved to cache_data.json
+2024-09-12 03:10:18,371 - INFO - Cache cleared
+2024-09-12 03:10:23,558 - INFO - Incoming request for: /products
+2024-09-12 03:10:23,558 - INFO - Cache HIT: /products
+2024-09-12 03:10:23,558 - INFO - Serving cached response for: /products
+2024-09-12 03:10:23,559 - INFO - 127.0.0.1 [12/Sep/2024:03:10:23 +0200] "GET /products HTTP/1.1" 200 45407 "-" "Python/3.12 aiohttp/3.10.5"
+2024-09-12 03:10:24,569 - INFO - Incoming request for: /users
+2024-09-12 03:10:24,570 - INFO - Cache HIT: /users
+2024-09-12 03:10:24,570 - INFO - Serving cached response for: /users
+2024-09-12 03:10:24,572 - INFO - 127.0.0.1 [12/Sep/2024:03:10:24 +0200] "GET /users HTTP/1.1" 200 42979 "-" "Python/3.12 aiohttp/3.10.5"
+2024-09-12 03:10:25,577 - INFO - Incoming request for: /todos
+2024-09-12 03:10:25,577 - INFO - Cache HIT: /todos
+2024-09-12 03:10:25,578 - INFO - Serving cached response for: /todos
+2024-09-12 03:10:25,579 - INFO - 127.0.0.1 [12/Sep/2024:03:10:25 +0200] "GET /todos HTTP/1.1" 200 3602 "-" "Python/3.12 aiohttp/3.10.5"
+2024-09-12 03:10:26,584 - INFO - Incoming request for: /carts
+2024-09-12 03:10:26,585 - INFO - Cache HIT: /carts
+2024-09-12 03:10:26,585 - INFO - Serving cached response for: /carts
+2024-09-12 03:10:26,587 - INFO - 127.0.0.1 [12/Sep/2024:03:10:26 +0200] "GET /carts HTTP/1.1" 200 33197 "-" "Python/3.12 aiohttp/3.10.5"
+2024-09-12 03:10:27,593 - INFO - Incoming request for: /posts
+2024-09-12 03:10:27,593 - INFO - Cache HIT: /posts
+2024-09-12 03:10:27,594 - INFO - Serving cached response for: /posts
+2024-09-12 03:10:27,594 - INFO - 127.0.0.1 [12/Sep/2024:03:10:27 +0200] "GET /posts HTTP/1.1" 200 15760 "-" "Python/3.12 aiohttp/3.10.5"
+2024-09-12 03:10:28,597 - INFO - Incoming request for: /comments
+2024-09-12 03:10:28,598 - INFO - Cache HIT: /comments
+2024-09-12 03:10:28,598 - INFO - Serving cached response for: /comments
+2024-09-12 03:10:28,599 - INFO - 127.0.0.1 [12/Sep/2024:03:10:28 +0200] "GET /comments HTTP/1.1" 200 5219 "-" "Python/3.12 aiohttp/3.10.5"
+2024-09-12 03:10:33,477 - INFO - Incoming request for: /products
+2024-09-12 03:10:33,477 - INFO - Cache HIT: /products
+2024-09-12 03:10:33,477 - INFO - Serving cached response for: /products
+2024-09-12 03:10:33,479 - INFO - 127.0.0.1 [12/Sep/2024:03:10:33 +0200] "GET /products HTTP/1.1" 200 45407 "-" "Python/3.12 aiohttp/3.10.5"
+2024-09-12 03:10:33,484 - INFO - Incoming request for: /users
+2024-09-12 03:10:33,484 - INFO - Cache HIT: /users
+2024-09-12 03:10:33,485 - INFO - Serving cached response for: /users
+2024-09-12 03:10:33,485 - INFO - 127.0.0.1 [12/Sep/2024:03:10:33 +0200] "GET /users HTTP/1.1" 200 42979 "-" "Python/3.12 aiohttp/3.10.5"
+2024-09-12 03:10:33,489 - INFO - Incoming request for: /todos
+2024-09-12 03:10:33,490 - INFO - Cache HIT: /todos
+2024-09-12 03:10:33,490 - INFO - Serving cached response for: /todos
+2024-09-12 03:10:33,491 - INFO - 127.0.0.1 [12/Sep/2024:03:10:33 +0200] "GET /todos HTTP/1.1" 200 3602 "-" "Python/3.12 aiohttp/3.10.5"
+2024-09-12 03:10:33,494 - INFO - Incoming request for: /carts
+2024-09-12 03:10:33,494 - INFO - Cache HIT: /carts
+2024-09-12 03:10:33,494 - INFO - Serving cached response for: /carts
+2024-09-12 03:10:33,495 - INFO - 127.0.0.1 [12/Sep/2024:03:10:33 +0200] "GET /carts HTTP/1.1" 200 33197 "-" "Python/3.12 aiohttp/3.10.5"
+2024-09-12 03:10:33,500 - INFO - Incoming request for: /posts
+2024-09-12 03:10:33,501 - INFO - Cache HIT: /posts
+2024-09-12 03:10:33,501 - INFO - Serving cached response for: /posts
+2024-09-12 03:10:33,501 - INFO - 127.0.0.1 [12/Sep/2024:03:10:33 +0200] "GET /posts HTTP/1.1" 200 15760 "-" "Python/3.12 aiohttp/3.10.5"
+2024-09-12 03:10:33,503 - INFO - Incoming request for: /comments
+2024-09-12 03:10:33,503 - INFO - Cache HIT: /comments
+2024-09-12 03:10:33,503 - INFO - Serving cached response for: /comments
+2024-09-12 03:10:33,504 - INFO - 127.0.0.1 [12/Sep/2024:03:10:33 +0200] "GET /comments HTTP/1.1" 200 5219 "-" "Python/3.12 aiohttp/3.10.5"
+2024-09-12 03:10:45,808 - INFO - Incoming request for: /products
+2024-09-12 03:10:45,809 - INFO - Cache HIT: /products
+2024-09-12 03:10:45,809 - INFO - Serving cached response for: /products
+2024-09-12 03:10:45,812 - INFO - 127.0.0.1 [12/Sep/2024:03:10:45 +0200] "GET /products HTTP/1.1" 200 45407 "-" "Python/3.12 aiohttp/3.10.5"
+2024-09-12 03:10:45,819 - INFO - Incoming request for: /users
+2024-09-12 03:10:45,819 - INFO - Cache HIT: /users
+2024-09-12 03:10:45,819 - INFO - Serving cached response for: /users
+2024-09-12 03:10:45,820 - INFO - 127.0.0.1 [12/Sep/2024:03:10:45 +0200] "GET /users HTTP/1.1" 200 42979 "-" "Python/3.12 aiohttp/3.10.5"
+2024-09-12 03:10:45,825 - INFO - Incoming request for: /todos
+2024-09-12 03:10:45,825 - INFO - Cache HIT: /todos
+2024-09-12 03:10:45,825 - INFO - Serving cached response for: /todos
+2024-09-12 03:10:45,826 - INFO - 127.0.0.1 [12/Sep/2024:03:10:45 +0200] "GET /todos HTTP/1.1" 200 3602 "-" "Python/3.12 aiohttp/3.10.5"
+2024-09-12 03:10:45,829 - INFO - Incoming request for: /carts
+2024-09-12 03:10:45,829 - INFO - Cache HIT: /carts
+2024-09-12 03:10:45,829 - INFO - Serving cached response for: /carts
+2024-09-12 03:10:45,829 - INFO - 127.0.0.1 [12/Sep/2024:03:10:45 +0200] "GET /carts HTTP/1.1" 200 33197 "-" "Python/3.12 aiohttp/3.10.5"
+2024-09-12 03:10:45,836 - INFO - Incoming request for: /posts
+2024-09-12 03:10:45,837 - INFO - Cache HIT: /posts
+2024-09-12 03:10:45,837 - INFO - Serving cached response for: /posts
+2024-09-12 03:10:45,837 - INFO - 127.0.0.1 [12/Sep/2024:03:10:45 +0200] "GET /posts HTTP/1.1" 200 15760 "-" "Python/3.12 aiohttp/3.10.5"
+2024-09-12 03:10:45,841 - INFO - Incoming request for: /comments
+2024-09-12 03:10:45,842 - INFO - Cache HIT: /comments
+2024-09-12 03:10:45,842 - INFO - Serving cached response for: /comments
+2024-09-12 03:10:45,842 - INFO - 127.0.0.1 [12/Sep/2024:03:10:45 +0200] "GET /comments HTTP/1.1" 200 5219 "-" "Python/3.12 aiohttp/3.10.5"
+2024-09-12 03:10:50,952 - INFO - Incoming request for: /products
+2024-09-12 03:10:50,953 - INFO - Cache HIT: /products
+2024-09-12 03:10:50,953 - INFO - Serving cached response for: /products
+2024-09-12 03:10:50,954 - INFO - 127.0.0.1 [12/Sep/2024:03:10:50 +0200] "GET /products HTTP/1.1" 200 45407 "-" "Python/3.12 aiohttp/3.10.5"
+2024-09-12 03:10:50,959 - INFO - Incoming request for: /users
+2024-09-12 03:10:50,959 - INFO - Cache HIT: /users
+2024-09-12 03:10:50,959 - INFO - Serving cached response for: /users
+2024-09-12 03:10:50,960 - INFO - 127.0.0.1 [12/Sep/2024:03:10:50 +0200] "GET /users HTTP/1.1" 200 42979 "-" "Python/3.12 aiohttp/3.10.5"
+2024-09-12 03:10:50,965 - INFO - Incoming request for: /todos
+2024-09-12 03:10:50,966 - INFO - Cache HIT: /todos
+2024-09-12 03:10:50,966 - INFO - Serving cached response for: /todos
+2024-09-12 03:10:50,968 - INFO - 127.0.0.1 [12/Sep/2024:03:10:50 +0200] "GET /todos HTTP/1.1" 200 3602 "-" "Python/3.12 aiohttp/3.10.5"
+2024-09-12 03:10:50,973 - INFO - Incoming request for: /carts
+2024-09-12 03:10:50,973 - INFO - Cache HIT: /carts
+2024-09-12 03:10:50,974 - INFO - Serving cached response for: /carts
+2024-09-12 03:10:50,975 - INFO - 127.0.0.1 [12/Sep/2024:03:10:50 +0200] "GET /carts HTTP/1.1" 200 33197 "-" "Python/3.12 aiohttp/3.10.5"
+2024-09-12 03:10:50,982 - INFO - Incoming request for: /posts
+2024-09-12 03:10:50,982 - INFO - Cache HIT: /posts
+2024-09-12 03:10:50,982 - INFO - Serving cached response for: /posts
+2024-09-12 03:10:50,983 - INFO - 127.0.0.1 [12/Sep/2024:03:10:50 +0200] "GET /posts HTTP/1.1" 200 15760 "-" "Python/3.12 aiohttp/3.10.5"
+2024-09-12 03:10:50,986 - INFO - Incoming request for: /comments
+2024-09-12 03:10:50,986 - INFO - Cache HIT: /comments
+2024-09-12 03:10:50,986 - INFO - Serving cached response for: /comments
+2024-09-12 03:10:50,987 - INFO - 127.0.0.1 [12/Sep/2024:03:10:50 +0200] "GET /comments HTTP/1.1" 200 5219 "-" "Python/3.12 aiohttp/3.10.5"
+2024-09-12 03:11:13,323 - INFO - Incoming request for: /products
+2024-09-12 03:11:13,324 - INFO - Cache HIT: /products
+2024-09-12 03:11:13,324 - INFO - Serving cached response for: /products
+2024-09-12 03:11:13,327 - INFO - 127.0.0.1 [12/Sep/2024:03:11:13 +0200] "GET /products HTTP/1.1" 200 45407 "-" "Python/3.12 aiohttp/3.10.5"
+2024-09-12 03:11:13,332 - INFO - Incoming request for: /users
+2024-09-12 03:11:13,332 - INFO - Cache HIT: /users
+2024-09-12 03:11:13,332 - INFO - Serving cached response for: /users
+2024-09-12 03:11:13,333 - INFO - 127.0.0.1 [12/Sep/2024:03:11:13 +0200] "GET /users HTTP/1.1" 200 42979 "-" "Python/3.12 aiohttp/3.10.5"
+2024-09-12 03:11:13,337 - INFO - Incoming request for: /todos
+2024-09-12 03:11:13,338 - INFO - Cache HIT: /todos
+2024-09-12 03:11:13,338 - INFO - Serving cached response for: /todos
+2024-09-12 03:11:13,338 - INFO - 127.0.0.1 [12/Sep/2024:03:11:13 +0200] "GET /todos HTTP/1.1" 200 3602 "-" "Python/3.12 aiohttp/3.10.5"
+2024-09-12 03:11:13,341 - INFO - Incoming request for: /carts
+2024-09-12 03:11:13,342 - INFO - Cache HIT: /carts
+2024-09-12 03:11:13,342 - INFO - Serving cached response for: /carts
+2024-09-12 03:11:13,344 - INFO - 127.0.0.1 [12/Sep/2024:03:11:13 +0200] "GET /carts HTTP/1.1" 200 33197 "-" "Python/3.12 aiohttp/3.10.5"
+2024-09-12 03:11:13,349 - INFO - Incoming request for: /posts
+2024-09-12 03:11:13,350 - INFO - Cache HIT: /posts
+2024-09-12 03:11:13,350 - INFO - Serving cached response for: /posts
+2024-09-12 03:11:13,351 - INFO - 127.0.0.1 [12/Sep/2024:03:11:13 +0200] "GET /posts HTTP/1.1" 200 15760 "-" "Python/3.12 aiohttp/3.10.5"
+2024-09-12 03:11:13,354 - INFO - Incoming request for: /comments
+2024-09-12 03:11:13,354 - INFO - Cache HIT: /comments
+2024-09-12 03:11:13,354 - INFO - Serving cached response for: /comments
+2024-09-12 03:11:13,355 - INFO - 127.0.0.1 [12/Sep/2024:03:11:13 +0200] "GET /comments HTTP/1.1" 200 5219 "-" "Python/3.12 aiohttp/3.10.5"
+2024-09-12 03:11:27,124 - INFO - Cache loaded from cache_data.json
+2024-09-12 03:11:27,124 - INFO - Cache loaded from cache_data.json
+2024-09-12 03:11:27,125 - INFO - Starting proxy server on port 3002, forwarding requests to https://dummyjson.com
+2024-09-12 03:11:36,428 - INFO - Incoming request for: /products
+2024-09-12 03:11:36,429 - INFO - Cache MISS: /products
+2024-09-12 03:11:37,562 - INFO - Forwarding request to: https://dummyjson.com/products
+2024-09-12 03:11:37,566 - INFO - Cache saved to cache_data.json
+2024-09-12 03:11:37,566 - INFO - CACHED: /products
+2024-09-12 03:11:37,570 - INFO - 127.0.0.1 [12/Sep/2024:03:11:36 +0200] "GET /products HTTP/1.1" 200 45407 "-" "Python/3.12 aiohttp/3.10.5"
+2024-09-12 03:11:37,578 - INFO - Incoming request for: /users
+2024-09-12 03:11:37,579 - INFO - Cache MISS: /users
+2024-09-12 03:11:38,790 - INFO - Forwarding request to: https://dummyjson.com/users
+2024-09-12 03:11:38,794 - INFO - Cache saved to cache_data.json
+2024-09-12 03:11:38,795 - INFO - CACHED: /users
+2024-09-12 03:11:38,797 - INFO - 127.0.0.1 [12/Sep/2024:03:11:37 +0200] "GET /users HTTP/1.1" 200 42975 "-" "Python/3.12 aiohttp/3.10.5"
+2024-09-12 03:11:38,804 - INFO - Incoming request for: /todos
+2024-09-12 03:11:38,805 - INFO - Cache MISS: /todos
+2024-09-12 03:11:39,709 - INFO - Forwarding request to: https://dummyjson.com/todos
+2024-09-12 03:11:39,713 - INFO - Cache saved to cache_data.json
+2024-09-12 03:11:39,714 - INFO - CACHED: /todos
+2024-09-12 03:11:39,716 - INFO - 127.0.0.1 [12/Sep/2024:03:11:38 +0200] "GET /todos HTTP/1.1" 200 3594 "-" "Python/3.12 aiohttp/3.10.5"
+2024-09-12 03:11:39,723 - INFO - Incoming request for: /carts
+2024-09-12 03:11:39,723 - INFO - Cache MISS: /carts
+2024-09-12 03:11:40,632 - INFO - Forwarding request to: https://dummyjson.com/carts
+2024-09-12 03:11:40,639 - INFO - Cache saved to cache_data.json
+2024-09-12 03:11:40,640 - INFO - CACHED: /carts
+2024-09-12 03:11:40,642 - INFO - 127.0.0.1 [12/Sep/2024:03:11:39 +0200] "GET /carts HTTP/1.1" 200 33193 "-" "Python/3.12 aiohttp/3.10.5"
+2024-09-12 03:11:40,655 - INFO - Incoming request for: /posts
+2024-09-12 03:11:40,655 - INFO - Cache MISS: /posts
+2024-09-12 03:11:41,551 - INFO - Forwarding request to: https://dummyjson.com/posts
+2024-09-12 03:11:41,553 - INFO - Cache saved to cache_data.json
+2024-09-12 03:11:41,553 - INFO - CACHED: /posts
+2024-09-12 03:11:41,554 - INFO - 127.0.0.1 [12/Sep/2024:03:11:40 +0200] "GET /posts HTTP/1.1" 200 15752 "-" "Python/3.12 aiohttp/3.10.5"
+2024-09-12 03:11:41,557 - INFO - Incoming request for: /comments
+2024-09-12 03:11:41,557 - INFO - Cache MISS: /comments
+2024-09-12 03:11:42,425 - INFO - Forwarding request to: https://dummyjson.com/comments
+2024-09-12 03:11:42,433 - INFO - Cache saved to cache_data.json
+2024-09-12 03:11:42,433 - INFO - CACHED: /comments
+2024-09-12 03:11:42,436 - INFO - 127.0.0.1 [12/Sep/2024:03:11:41 +0200] "GET /comments HTTP/1.1" 200 5215 "-" "Python/3.12 aiohttp/3.10.5"
+2024-09-12 03:15:12,134 - INFO - Cache loaded from cache_data.json
+2024-09-12 03:15:12,136 - INFO - Cache cleared
